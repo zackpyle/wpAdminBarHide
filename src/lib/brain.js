@@ -8,7 +8,7 @@ const wpAdminHide = {
     let obj = {};
     obj[domain] = true;
     chrome.storage.sync.set(obj, function(){
-        // console.log("Domain added: " + domain);
+        // console.log(domain + "added to storage, admin bar removed.");
     });
   },
 
@@ -17,7 +17,7 @@ const wpAdminHide = {
    */
   remD: function(domain) {
     chrome.storage.sync.remove(domain, function(){
-        // console.log("Domain removed: " + domain);
+        // console.log(domain + "removed to storage, admin bar restored.");
     });
   },
 
@@ -28,7 +28,7 @@ const wpAdminHide = {
   chkD: function(tabId, yes, no) {
     chrome.tabs.get(tabId, function(tab) {
       if (tab.url.startsWith("chrome")) {
-        console.error("can't run on chrome pages, sorry :(");
+        console.error("Can't run on Chrome pages, sorry :(");
         return;
       }
       let domain = tab.url.split("/")[2];
